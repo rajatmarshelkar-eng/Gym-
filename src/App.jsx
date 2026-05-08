@@ -434,10 +434,16 @@ function FloatingWhatsApp() {
 function FloatingJoinBtn({ setActive }) {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <motion.button 
-      initial={{ scale: 0, opacity: 0 }} 
-      animate={{ scale: 1, opacity: 1 }} 
-      transition={{ delay: 2, type: "spring" }}
+    <motion.button
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{
+        scale: 1, opacity: 1,
+        backgroundPosition: ["200% 0", "-200% 0"]
+      }}
+      transition={{
+        delay: 2, type: "spring",
+        backgroundPosition: { duration: isHovered ? 1.2 : 4, repeat: Infinity, ease: "linear", repeatDelay: isHovered ? 0.3 : 2 }
+      }}
       onHoverStart={() => {
         setIsHovered(true);
         playHoverSound();
@@ -456,10 +462,6 @@ function FloatingJoinBtn({ setActive }) {
         color: "#1E1E1E", 
         fontFamily: "'Barlow Condensed',sans-serif", 
         boxShadow: `0 10px 30px rgba(201, 160, 61, 0.5)` 
-      }}
-      animate={{ backgroundPosition: ["200% 0", "-200% 0"] }}
-      transition={{ 
-        backgroundPosition: { duration: isHovered ? 1.2 : 4, repeat: Infinity, ease: "linear", repeatDelay: isHovered ? 0.3 : 2 }
       }}
     >
       JOIN NOW <IconLightning style={{ width: 14, height: 14 }} />
