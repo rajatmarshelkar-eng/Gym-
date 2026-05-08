@@ -48,6 +48,6 @@ const ProductCard = ({ product, onAdd }) => {
       </div>
     </motion.div>
   );
-};
+}:
 
 export default ProductCard;
